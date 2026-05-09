@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Borsec – Relationship Ladder</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>Borsec – Brand Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --green-dark: #1a4a2e;
@@ -16,7 +16,7 @@
     --cream: #faf8f3;
     --text: #1c2b1e;
     --text-muted: #4a5c4e;
-    --blue-accent: #1a6a7a;
+    --red-insight: #b03a2e;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +29,6 @@
     overflow-x: hidden;
   }
 
-  /* Background texture */
   body::before {
     content: '';
     position: fixed;
@@ -41,16 +40,81 @@
     z-index: 0;
   }
 
+  /* ── SITE HEADER ── */
+  .site-header {
+    position: relative;
+    z-index: 10;
+    background: var(--green-dark);
+    padding: 20px 32px 0;
+    text-align: center;
+  }
+
+  .site-header .brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 2px;
+  }
+
+  .site-header .brand-title em { color: var(--gold); font-style: italic; }
+
+  .site-header .brand-sub {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .tab-btn {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .tab-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  .tab-btn.active {
+    background: var(--cream);
+    color: var(--green-dark);
+  }
+
+  /* ── TAB PANELS ── */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── PAGE WRAPPER ── */
   .page {
     position: relative;
     z-index: 1;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 48px 32px;
+    padding: 48px 32px 60px;
   }
 
-  /* HEADER */
-  header {
+  /* ════════════════════════════
+     RELATIONSHIP LADDER STYLES
+  ════════════════════════════ */
+  .rl-header {
     text-align: center;
     margin-bottom: 48px;
     padding-bottom: 32px;
@@ -69,26 +133,22 @@
     font-weight: 700;
   }
 
-  header h1 {
+  .rl-header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
+    font-size: 38px;
     color: var(--green-dark);
     line-height: 1.15;
     margin-bottom: 8px;
   }
 
-  header h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
+  .rl-header h1 em { color: var(--gold); font-style: italic; }
 
-  header p.tagline {
-    font-size: 14px;
+  .rl-header p {
+    font-size: 13px;
     color: var(--text-muted);
     letter-spacing: 1px;
   }
 
-  /* GRID LAYOUT */
   .grid {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -96,14 +156,8 @@
     align-items: start;
   }
 
-  /* LEFT COLUMN */
-  .left-col {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
+  .left-col { display: flex; flex-direction: column; gap: 28px; }
 
-  /* PYRAMID */
   .pyramid-wrap {
     background: white;
     border: 1px solid rgba(26,74,46,0.1);
@@ -118,391 +172,469 @@
     font-size: 13px;
     color: var(--green-dark);
     margin-bottom: 16px;
-    letter-spacing: 0.5px;
   }
 
-  .pyramid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    margin-bottom: 12px;
-  }
+  .pyramid { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 12px; }
 
   .pyramid-tier {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
     text-transform: uppercase;
     clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
     transition: transform 0.2s;
   }
-
   .pyramid-tier:hover { transform: scaleX(1.03); }
-
   .tier-1 { width: 60px;  height: 38px; background: #8b1a1a; clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%); }
   .tier-2 { width: 100px; height: 38px; background: #6b8e23; }
   .tier-3 { width: 140px; height: 38px; background: #b8860b; }
   .tier-4 { width: 188px; height: 44px; background: var(--green-mid); }
 
-  .pyramid-label {
-    font-size: 8px;
-    color: var(--text-muted);
-    margin-top: 2px;
-    text-align: right;
-    padding-right: 4px;
-  }
+  .copyright { font-size: 9px; color: #aaa; margin-top: 8px; font-style: italic; }
 
-  .copyright {
-    font-size: 9px;
-    color: #aaa;
-    margin-top: 8px;
-    font-style: italic;
-  }
-
-  /* TENSION BOX */
-  .tension-box {
-    background: var(--green-dark);
-    border-radius: 12px;
-    padding: 20px;
-    color: white;
-  }
-
-  .tension-box h3 {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-
-  .tension-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .tension-list li {
-    font-size: 13px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.8);
-    padding-left: 12px;
-    position: relative;
-  }
-
-  .tension-list li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-  }
-
-  .tension-list li.active {
-    font-weight: 700;
-    color: white;
-  }
-
+  .tension-box { background: var(--green-dark); border-radius: 12px; padding: 20px; color: white; }
+  .tension-box h3 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; font-weight: 700; }
+  .tension-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .tension-list li { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.8); padding-left: 12px; position: relative; }
+  .tension-list li::before { content: '·'; position: absolute; left: 0; color: var(--gold); }
+  .tension-list li.active { font-weight: 700; color: white; }
   .tension-list li.active::before { content: '★'; font-size: 9px; top: 2px; }
 
-  /* RIGHT COLUMN – CARDS */
-  .right-col {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+  .right-col { display: flex; flex-direction: column; gap: 20px; }
 
   .card {
-    background: white;
-    border-radius: 12px;
-    padding: 24px 28px;
+    background: white; border-radius: 12px; padding: 24px 28px;
     border: 1px solid rgba(26,74,46,0.08);
     box-shadow: 0 2px 16px rgba(26,74,46,0.05);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: box-shadow 0.25s, transform 0.25s;
   }
-
-  .card:hover {
-    box-shadow: 0 8px 32px rgba(26,74,46,0.1);
-    transform: translateY(-2px);
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    border-radius: 12px 0 0 12px;
-  }
-
+  .card:hover { box-shadow: 0 8px 32px rgba(26,74,46,0.1); transform: translateY(-2px); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 12px 0 0 12px; }
   .card.beliefs::before  { background: #8b1a1a; }
   .card.emotional::before { background: #6b8e23; }
   .card.gains::before    { background: #b8860b; }
   .card.attract::before  { background: var(--green-mid); }
 
   .card-tier-label {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 12px;
-    padding: 3px 10px;
-    border-radius: 20px;
+    display: inline-block; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 12px;
+    padding: 3px 10px; border-radius: 20px;
   }
-
   .beliefs  .card-tier-label { background: #f9ecec; color: #8b1a1a; }
   .emotional .card-tier-label { background: #f0f5e8; color: #4a6e10; }
   .gains    .card-tier-label { background: #fdf5e0; color: #8b6a00; }
   .attract  .card-tier-label { background: var(--green-pale); color: var(--green-dark); }
 
-  .card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--green-dark);
+  .card h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--green-dark); margin-bottom: 14px; }
+
+  .card-rows { display: flex; flex-direction: column; gap: 8px; }
+  .card-row { display: grid; grid-template-columns: 160px 1fr; gap: 8px; font-size: 13.5px; line-height: 1.5; }
+  .card-row .label { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; padding-top: 1px; }
+  .card-row .value { color: var(--text); }
+
+  .rl-footer {
+    text-align: center; margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid rgba(200,169,74,0.2);
+    font-size: 12px; color: var(--text-muted); font-style: italic;
+  }
+  .rl-footer strong { color: var(--green-dark); font-style: normal; }
+
+  /* ════════════════════════════
+     BUYER PERSONA STYLES
+  ════════════════════════════ */
+  .bp-header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .bp-badge {
+    display: inline-block;
+    background: var(--green-dark);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 16px;
     margin-bottom: 14px;
   }
 
-  .card-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .bp-header h1 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--green-dark); margin-bottom: 4px; }
+  .bp-header p { color: var(--text-muted); font-size: 13px; letter-spacing: 1px; }
 
-  .card-row {
+  .persona-hero {
     display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 8px;
-    font-size: 13.5px;
-    line-height: 1.5;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    background: var(--green-dark);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 28px;
+    color: white;
   }
 
-  .card-row .label {
-    font-weight: 700;
-    color: var(--text-muted);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding-top: 1px;
+  .avatar { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .avatar-circle {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-light), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; border: 3px solid rgba(200,169,74,0.4);
   }
+  .persona-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); text-align: center; }
+  .persona-title { font-size: 12px; color: rgba(255,255,255,0.6); text-align: center; font-style: italic; }
 
-  .card-row .value {
-    color: var(--text);
+  .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: start; }
+  .demo-item label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 3px; }
+  .demo-item span { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 300; }
+
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+
+  .bp-card {
+    background: white; border-radius: 12px; padding: 20px 22px;
+    border: 1px solid rgba(26,74,46,0.08);
+    box-shadow: 0 2px 12px rgba(26,74,46,0.05);
+    position: relative; overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.25s;
   }
+  .bp-card:hover { box-shadow: 0 8px 32px rgba(26,74,46,0.1); transform: translateY(-2px); }
+  .bp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+  .bp-card.viata::before    { background: var(--green-light); }
+  .bp-card.momente::before  { background: var(--gold); }
+  .bp-card.visuri::before   { background: #7b68ee; }
+  .bp-card.valori::before   { background: var(--green-mid); }
+  .bp-card.tensiuni::before { background: #e74c3c; }
+  .bp-card.ocazii::before   { background: #3498db; }
+  .bp-card.relatie::before  { background: #e67e22; }
 
-  /* RESPONSIVE */
+  .card-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+  .bp-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .bp-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .bp-card ul li { font-size: 13.5px; color: var(--text); line-height: 1.5; padding-left: 14px; position: relative; }
+  .bp-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--green-light); font-size: 11px; top: 2px; }
+
+  .bp-card.full { grid-column: 1 / -1; }
+
+  .insight-box {
+    background: var(--red-insight);
+    border-radius: 16px; padding: 28px 32px;
+    color: white; text-align: center;
+  }
+  .insight-box .label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 8px; font-weight: 700; }
+  .insight-box .jtbd { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
+  .insight-box h2 { font-size: 20px; font-weight: 900; line-height: 1.4; color: #fff; max-width: 700px; margin: 0 auto; }
+  .insight-box h2 em { font-style: italic; color: #ffd700; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
-    .page { padding: 28px 16px; }
+    .page { padding: 28px 16px 48px; }
+    .site-header { padding: 16px 16px 0; }
+    .tab-btn { font-size: 10px; padding: 10px 14px; letter-spacing: 0.5px; }
+    .site-header .brand-title { font-size: 22px; }
 
-    header h1 { font-size: 28px; }
-
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .left-col {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
+    /* RL */
+    .rl-header h1 { font-size: 26px; }
+    .grid { grid-template-columns: 1fr; gap: 20px; }
+    .left-col { flex-direction: row; flex-wrap: wrap; gap: 16px; }
     .pyramid-wrap { flex: 1; min-width: 140px; }
     .tension-box  { flex: 1; min-width: 160px; }
-
     .card { padding: 18px 16px; }
-
     .card h2 { font-size: 16px; }
-
-    .card-row {
-      grid-template-columns: 1fr;
-      gap: 2px;
-    }
-
-    .card-row .label {
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
+    .card-row { grid-template-columns: 1fr; gap: 2px; }
+    .card-row .label { font-size: 10px; }
     .card-row .value { font-size: 13px; }
-  }
 
-  /* FOOTER */
-  footer {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(200,169,74,0.2);
-    font-size: 12px;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  footer strong {
-    color: var(--green-dark);
-    font-style: normal;
-  }
-
-  /* Decorative corner */
-  .deco {
-    position: fixed;
-    bottom: 0; right: 0;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle at 100% 100%, rgba(74,158,107,0.08), transparent 70%);
-    pointer-events: none;
+    /* BP */
+    .persona-hero { grid-template-columns: 1fr; }
+    .demo-grid { grid-template-columns: 1fr 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .bp-card.full { grid-column: 1; }
+    .bp-header h1 { font-size: 26px; }
+    .insight-box h2 { font-size: 17px; }
   }
 </style>
 </head>
 <body>
-<div class="deco"></div>
-<div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <div class="brand-badge">Relationship Ladder</div>
-    <h1>Regina Apelor Minerale<br><em>Borsec</em></h1>
-    <p class="tagline">Mix of Performance Elements with Promises · Brand Architects Framework</p>
-  </header>
+<!-- SITE HEADER + TABS -->
+<div class="site-header">
+  <div class="brand-title">Regina Apelor Minerale — <em>Borsec</em></div>
+  <div class="brand-sub">Brand Strategy Hub · © Mihai Bonca | Brand Architects</div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('ladder', this)">🏔️ Relationship Ladder</button>
+    <button class="tab-btn" onclick="switchTab('persona', this)">👤 Buyer Persona</button>
+  </div>
+</div>
 
-  <div class="grid">
+<!-- ══ TAB 1: RELATIONSHIP LADDER ══ -->
+<div id="tab-ladder" class="tab-panel active">
+  <div class="page">
 
-    <!-- LEFT COLUMN -->
-    <div class="left-col">
+    <div class="rl-header">
+      <div class="brand-badge">Relationship Ladder</div>
+      <h1>Natura nu se inventează,<br><em>se descoperă.</em></h1>
+      <p>Mix of Performance Elements with Promises · Brand Architects Framework</p>
+    </div>
 
-      <!-- PYRAMID -->
-      <div class="pyramid-wrap">
-        <h3>Relationship Pyramid</h3>
-        <div class="pyramid">
-          <div class="pyramid-tier tier-1">Beliefs</div>
-          <div class="pyramid-tier tier-2">Emotional</div>
-          <div class="pyramid-tier tier-3">Gains</div>
-          <div class="pyramid-tier tier-4">Attractivity</div>
+    <div class="grid">
+      <div class="left-col">
+        <div class="pyramid-wrap">
+          <h3>Relationship Pyramid</h3>
+          <div class="pyramid">
+            <div class="pyramid-tier tier-1">Beliefs</div>
+            <div class="pyramid-tier tier-2">Emotional</div>
+            <div class="pyramid-tier tier-3">Gains</div>
+            <div class="pyramid-tier tier-4">Attractivity</div>
+          </div>
+          <div class="copyright">© Mihai Bonca | Brand Architects</div>
         </div>
-        <div class="copyright">© Mihai Bonca | Brand Architects</div>
+
+        <div class="tension-box">
+          <h3>Customer Tension<br>Needs &amp; Voids</h3>
+          <ul class="tension-list">
+            <li>Growth</li>
+            <li>Contribution</li>
+            <li>Love &amp; connection</li>
+            <li class="active">Importance</li>
+            <li>Diversity &amp; novelty</li>
+            <li class="active">Safety &amp; control</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- TENSION BOX -->
-      <div class="tension-box">
-        <h3>Customer Tension<br>Needs &amp; Voids</h3>
-        <ul class="tension-list">
-          <li>Growth</li>
-          <li>Contribution</li>
-          <li>Love &amp; connection</li>
-          <li class="active">Importance</li>
-          <li>Diversity &amp; novelty</li>
-          <li class="active">Safety &amp; control</li>
+      <div class="right-col">
+        <div class="card beliefs">
+          <div class="card-tier-label">Our Beliefs</div>
+          <h2>Natura nu se inventează, se descoperă.</h2>
+          <div class="card-rows">
+            <div class="card-row">
+              <span class="label">Shared Ambition</span>
+              <span class="value">Să ofere oamenilor cea mai pură și autentică sursă de hidratare, păstrând moștenirea naturii pentru generații viitoare</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Values</span>
+              <span class="value">Autenticitate, puritate, tradiție, excelență, respect față de natură și patrimoniu</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Success Measurement (KPIs)</span>
+              <span class="value">Lider de piață în ape minerale premium, prezență activă în 13+ țări pe 4 continente, recunoaștere ca simbol al calității românești</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card emotional">
+          <div class="card-tier-label">Emotional Connections</div>
+          <h2>Îl face pe consumator să se simtă bine.</h2>
+          <div class="card-rows">
+            <div class="card-row">
+              <span class="label">Emotional Benefits</span>
+              <span class="value">Sentimentul de puritate și grijă față de sine; mândrie că alegi cel mai bun produs românesc; conexiune cu natura și cu tradiția; senzație de rafinament și bun gust</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Experiences &amp; Memories</span>
+              <span class="value">Vacanțe la munte, momente de liniște și echilibru, gustul copilăriei, masa în familie</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card gains">
+          <div class="card-tier-label">Gains Confidence · Advantages · Evidence</div>
+          <h2>Câștigă încredere, arată avantajele.</h2>
+          <div class="card-rows">
+            <div class="card-row">
+              <span class="label">Rational Benefits</span>
+              <span class="value">Apă minerală naturală carbogazoasă, bogată în minerale, hidratare optimă, digestie îmbunătățită, fără aditivi</span>
+            </div>
+            <div class="card-row">
+              <span class="label">RTBs</span>
+              <span class="value">Izvor din Munții Harghita, compoziție minerală unică (bicarbonat, calciu, magneziu), tradiție din secolul XIX — exportat încă din perioada austro-ungară; nenumărate premii internaționale; disponibil în comunități românești din SUA și Canada; exportat în Europa, America de Nord, Orientul Mijlociu și Africa — validare internațională a calității</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Tribe Members</span>
+              <span class="value">Oameni care prețuiesc calitatea și autenticitatea; profesioniști urbani health-conscious; familii cu valori tradiționale; patrioți moderni</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Shadow &amp; Weaknesses</span>
+              <span class="value">Preț premium față de concurență; percepție de brand vechi, mai puțin cool la tineri; disponibilitate limitată în anumite piețe externe</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Currency</span>
+              <span class="value">Puritate &amp; patrimoniu natural — și cel mai bogat în minerale spriț din România 🍷</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card attract">
+          <div class="card-tier-label">Attractivity &amp; Engagement</div>
+          <h2>Lumea brandului Borsec.</h2>
+          <div class="card-rows">
+            <div class="card-row">
+              <span class="label">Personality</span>
+              <span class="value">Nobilă, rafinată, tradițională și totuși mereu relevantă — ca un aristocrat care nu are nevoie să se laude</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Narcissist ID</span>
+              <span class="value">Consumatorul vrea să fie văzut ca o persoană cu gust, educată, care știe să aleagă ce e mai bun pentru sine și familia sa</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Brand World</span>
+              <span class="value">„Regina Apelor Minerale" — superioară prin calitate și istorie; coroana și medalioanele evocă prestigiu și tradiție regală/europeană; elementele aurii și ornamentale transmit eleganță, autenticitate și continuitate; munții și peisajele simbolizează izvorul natural și originea din Harghita</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Rituals &amp; 5 Senses</span>
+              <span class="value">Sunetul bulelor la deschidere; răcoarea și prospețimea gustului; eticheta verde-aurie elegantă; aroma neutră, pură; sticla rece în palmă</span>
+            </div>
+            <div class="card-row">
+              <span class="label">Archetype</span>
+              <span class="value">Ruler &amp; Caregiver — liderul de necontestat care are grijă de cei dragi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rl-footer">
+      <strong>Borsec</strong> — „Regina Apelor Minerale" · Relationship Ladder construit pe baza framework-ului © Mihai Bonca | Brand Architects
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB 2: BUYER PERSONA ══ -->
+<div id="tab-persona" class="tab-panel">
+  <div class="page">
+
+    <div class="bp-header">
+      <div class="bp-badge">Buyer Persona · Who; Why; When &amp; Where; What</div>
+      <h1>Borsec — Consumatorul Ideal</h1>
+      <p>Brand Architects Framework · © Mihai Bonca</p>
+    </div>
+
+    <div class="persona-hero">
+      <div class="avatar">
+        <div class="avatar-circle">👩</div>
+        <div class="persona-name">Ana-Maria</div>
+        <div class="persona-title">„Cea care știe ce alege"</div>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-item"><label>Vârsta</label><span>35–50 ani</span></div>
+        <div class="demo-item"><label>Locuiește</label><span>Urban mare — București, Cluj, Timișoara</span></div>
+        <div class="demo-item"><label>Ocupație</label><span>Manager, antreprenor, profesionist liberal</span></div>
+        <div class="demo-item"><label>Situație socială</label><span>Venituri medii-superioare, familie cu copii</span></div>
+        <div class="demo-item"><label>Educație</label><span>Studii superioare, orientată spre calitate</span></div>
+        <div class="demo-item"><label>Stil de viață</label><span>Activ, conștient de sănătate, organizat</span></div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="bp-card viata">
+        <span class="card-icon">🌿</span>
+        <h3>Viața</h3>
+        <ul>
+          <li>Zi plină — muncă, familie, activități cu copiii</li>
+          <li>Se gândește la ce mănâncă și bea, citește etichete</li>
+          <li>Îmbină cariera ambițioasă cu viața de familie</li>
+          <li>Preocupată de sănătate, dar nu fanatic — echilibru</li>
+          <li>Apreciază lucrurile bune fără ostentație</li>
         </ul>
       </div>
 
+      <div class="bp-card momente">
+        <span class="card-icon">☀️</span>
+        <h3>Momente fericite &amp; de succes</h3>
+        <ul>
+          <li>Masa în familie duminica, bine pusă, cu Borsec pe masă</li>
+          <li>Recunoașterea la job, promovarea, proiectul reușit</li>
+          <li>Vacanță la munte cu familia — conexiunea cu natura</li>
+          <li>Când copiii sunt sănătoși și ea știe că îi hrănește bine</li>
+          <li>Momentul de liniște seara cu un pahar de apă minerală</li>
+        </ul>
+      </div>
+
+      <div class="bp-card visuri">
+        <span class="card-icon">✨</span>
+        <h3>Visuri</h3>
+        <ul>
+          <li>O viață echilibrată — succes fără sacrificarea sănătății</li>
+          <li>Să lase copiilor obiceiuri bune și valori solide</li>
+          <li>Să călătorească, să descopere locuri autentice din România</li>
+          <li>Recunoaștere ca om cu gust și discernământ</li>
+          <li>Să trăiască bine, nu neapărat luxos — dar calitativ</li>
+        </ul>
+      </div>
+
+      <div class="bp-card valori">
+        <span class="card-icon">🏛️</span>
+        <h3>Valori &amp; credințe</h3>
+        <ul>
+          <li>Autenticitatea bate prețul — preferă originalul</li>
+          <li>Tradițiile și patrimoniul românesc merită respectate</li>
+          <li>Calitatea se simte, nu se explică</li>
+          <li>Natura și puritatea sunt valori reale, nu marketing</li>
+          <li>Responsabilitate față de familie și față de sine</li>
+        </ul>
+      </div>
+
+      <div class="bp-card tensiuni">
+        <span class="card-icon">⚡</span>
+        <h3>Tensiuni</h3>
+        <ul>
+          <li>Frica de a nu alege greșit — produse cu aditivi ascunși</li>
+          <li>Teama că brandurile românești nu mai sunt ce erau</li>
+          <li>Presiunea timpului — vrea calitate dar rapid</li>
+          <li>Senzația că plătește premium fără să știe dacă merită</li>
+          <li>Fuge de artificialitate, de marketing agresiv și fals</li>
+        </ul>
+      </div>
+
+      <div class="bp-card ocazii">
+        <span class="card-icon">🛒</span>
+        <h3>Ocazii de achiziție &amp; consum</h3>
+        <ul>
+          <li><strong>Când cumpără:</strong> săptămânal la supermarket, în cantități mari</li>
+          <li><strong>Unde:</strong> hypermarket, magazin premium, livrare online</li>
+          <li><strong>Când consumă:</strong> la masă, la birou, în mașină, la restaurant</li>
+          <li><strong>Ocazii speciale:</strong> invitați acasă, sărbători, mese festive</li>
+          <li><strong>Trigger:</strong> sticla goală, lista de cumpărături, văzut pe raft</li>
+        </ul>
+      </div>
+
+      <div class="bp-card relatie full">
+        <span class="card-icon">💧</span>
+        <h3>Relația cu categoria de apă minerală</h3>
+        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 7px 24px;">
+          <li>Se raportează la apă ca la o alegere conștientă, nu implicită</li>
+          <li>Marca contează — nu cumpără „orice apă", ci <em>Borsec</em></li>
+          <li><strong>Driver principal:</strong> calitate dovedită + tradiție</li>
+          <li><strong>Barieră:</strong> prețul mai mare față de MDD sau concurență</li>
+          <li>Rolul mărcii: garanție că face alegerea corectă pentru familie</li>
+          <li><strong>Undereserved:</strong> vrea mai mult conținut educativ despre minerale și sănătate; format mai convenabil pentru birou/sport</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="right-col">
-
-      <!-- BELIEFS -->
-      <div class="card beliefs">
-        <div class="card-tier-label">Our Beliefs</div>
-        <h2>Natura nu se inventează, se descoperă.</h2>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="label">Shared Ambition</span>
-            <span class="value">Să ofere oamenilor cea mai pură și autentică sursă de hidratare, păstrând moștenirea naturii pentru generații viitoare</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Values</span>
-            <span class="value">Autenticitate, puritate, tradiție, excelență, respect față de natură și patrimoniu</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Success Measurement (KPIs)</span>
-            <span class="value">Lider de piață în ape minerale premium, prezență activă în 13+ țări pe 4 continente, recunoaștere ca simbol al calității românești</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- EMOTIONAL -->
-      <div class="card emotional">
-        <div class="card-tier-label">Emotional Connections</div>
-        <h2>Îl face pe consumator să se simtă bine.</h2>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="label">Emotional Benefits</span>
-            <span class="value">Sentimentul de puritate și grijă față de sine; mândrie că alegi cel mai bun produs românesc; conexiune cu natura și cu tradiția; senzație de rafinament și bun gust</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Experiences &amp; Memories</span>
-            <span class="value">Vacanțe la munte, momente de liniște și echilibru, gustul copilăriei, masa în familie</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- GAINS -->
-      <div class="card gains">
-        <div class="card-tier-label">Gains Confidence · Advantages · Evidence</div>
-        <h2>Câștigă încredere, arată avantajele.</h2>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="label">Rational Benefits</span>
-            <span class="value">Apă minerală naturală carbogazoasă, bogată în minerale, hidratare optimă, digestie îmbunătățită, fără aditivi</span>
-          </div>
-          <div class="card-row">
-            <span class="label">RTBs</span>
-            <span class="value">Izvor din Munții Harghita, compoziție minerală unică (bicarbonat, calciu, magneziu), tradiție din secolul XIX — exportat încă din perioada austro-ungară; nenumărate premii internaționale pentru apă minerală naturală; disponibil în comunități românești din SUA și Canada; exportat în Europa, America de Nord, Orientul Mijlociu și Africa — validare internațională a calității</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Tribe Members</span>
-            <span class="value">Oameni care prețuiesc calitatea și autenticitatea; profesioniști urbani health-conscious; familii cu valori tradiționale; patrioți moderni</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Shadow &amp; Weaknesses</span>
-            <span class="value">Preț premium față de concurență; percepție de brand vechi, mai puțin cool la tineri; disponibilitate limitată în anumite piețe externe</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Currency</span>
-            <span class="value">Puritate &amp; patrimoniu natural — și cel mai bogat în minerale spriț din România 🍷</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ATTRACTIVITY -->
-      <div class="card attract">
-        <div class="card-tier-label">Attractivity &amp; Engagement</div>
-        <h2>Lumea brandului Borsec.</h2>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="label">Personality</span>
-            <span class="value">Nobilă, rafinată, tradițională și totuși mereu relevantă — ca un aristocrat care nu are nevoie să se laude</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Narcissist ID</span>
-            <span class="value">Consumatorul vrea să fie văzut ca o persoană cu gust, educată, care știe să aleagă ce e mai bun pentru sine și familia sa</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Brand World</span>
-            <span class="value">„Regina Apelor Minerale" — superioară prin calitate și istorie; coroana și medalioanele evocă prestigiu și tradiție regală/europeană; elementele aurii și ornamentale transmit eleganță, autenticitate și continuitate; munții și peisajele simbolizează izvorul natural și originea din Harghita</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Rituals &amp; 5 Senses</span>
-            <span class="value">Sunetul bulelor la deschidere; răcoarea și prospețimea gustului; eticheta verde-aurie elegantă; aroma neutră, pură; sticla rece în palmă</span>
-          </div>
-          <div class="card-row">
-            <span class="label">Archetype</span>
-            <span class="value">Ruler &amp; Caregiver — liderul de necontestat care are grijă de cei dragi</span>
-          </div>
-        </div>
-      </div>
-
+    <div class="insight-box">
+      <div class="label">Key Insight · "Job to be done"</div>
+      <div class="jtbd">Ce așteaptă să facă de fapt marca pe care o alege?</div>
+      <h2>
+        Borsec trebuie să o facă să se simtă<br>
+        <em>o mamă și un om bun</em> — care știe să aleagă<br>
+        ce e pur, autentic și cu adevărat valoros<br>
+        pentru cei pe care îi iubește.
+      </h2>
     </div>
+
   </div>
-
-  <footer>
-    <strong>Borsec</strong> — „Regina Apelor Minerale" · Relationship Ladder construit pe baza framework-ului © Mihai Bonca | Brand Architects
-  </footer>
 </div>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
